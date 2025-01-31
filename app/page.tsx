@@ -3,8 +3,6 @@ import React from "react";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
-// TODO: add protected url to prevent access specific page (must login)
-// TODO: add logic to prevent user already login to access login page url
 export default function Page() {
   const { data: session } = useSession();
   if (session?.user) {

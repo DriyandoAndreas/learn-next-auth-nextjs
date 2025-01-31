@@ -27,5 +27,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/((?!/auth/login|auth/register|api|_next/static|_next/image|favicon.ico).*)"], // Proteksi semua halaman kecuali yang diizinkan
+  matcher: ["/((?!/auth/login|auth/register|api|_next/static|_next/image|favicon.ico).*)"], 
 };
