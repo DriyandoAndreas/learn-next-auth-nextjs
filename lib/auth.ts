@@ -25,16 +25,20 @@ export const authOptions: AuthOptions = {
           }
         })
         if (!user || !user.password) {
-          throw new Error("User tidak ditemukan atau belum mengatur password");
+          throw new Error("Something Wrong");
         }
         const passwordMatch = await bcrypt.compare(credentials.password, user.password);
         if (!passwordMatch) {
-          throw new Error("Password salah");
+          throw new Error("Something Wrong");
         }
         return user;
       },
     }),
   ],
+  pages: {
+    signIn: '/auth/login',
+    error: '/auth/error',
+  },
   callbacks: {
       async jwt({ token, user }) {
         if (user) {

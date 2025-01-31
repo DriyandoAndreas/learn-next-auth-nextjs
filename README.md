@@ -12,6 +12,8 @@ install bcrypt
 
 install swr
 
+install zod
+
 # use auth and session flow
 
 create folder api/auth/[...next-auth]/route.ts
@@ -35,3 +37,5 @@ fetch data from client using session data with swr
 add protected url to prevent access specific page (must login)
 
 add logic to prevent user already login to access login page url
+
+add logic zod to verify username password

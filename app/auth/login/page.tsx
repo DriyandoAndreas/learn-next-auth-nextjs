@@ -1,7 +1,7 @@
 "use client";
 
-import { signIn } from "next-auth/react";
-import { useState } from "react";
+import { signIn, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 import React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -15,9 +15,19 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (session) {
+      router.push("/");
+    }
+  }, [session, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +37,6 @@ export default function Login() {
       callbackUrl: "/",
     });
   };
-
   return (
     <div className="flex items-center justify-center h-screen">
       <form onSubmit={handleSubmit}>
@@ -67,10 +76,18 @@ export default function Login() {
               />
             </div>
           </CardContent>
-          <CardFooter className="flex justify-between">
+          <CardFooter className="flex-col justify-between">
             <Button className="w-full" type="submit">
               Masuk
             </Button>
+            <div className="flex justify-between mt-2">
+              <Label>
+                dont have account yet?{" "}
+                <Link href={"/auth/register"}>
+                  <span className="text-blue-600">Register here</span>
+                </Link>{" "}
+              </Label>
+            </div>
           </CardFooter>
         </Card>
       </form>
