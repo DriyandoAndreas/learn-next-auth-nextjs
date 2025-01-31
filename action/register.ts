@@ -22,10 +22,9 @@ export async function UserRegister(formData: FormData) {
             message: "Success"
         }
     } catch (error) {
-        const  errorlog  = console.log(error)
         return {
             status: "500",
-            message: errorlog
+            message: error
         }
     }
 }

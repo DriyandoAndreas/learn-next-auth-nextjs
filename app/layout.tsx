@@ -2,7 +2,7 @@
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@/components/theme-provider";
-
+import { Toaster } from "@/components/ui/sonner";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,6 +20,7 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
+          <Toaster />
         </SessionProvider>
       </body>
     </html>
