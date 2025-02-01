@@ -25,11 +25,11 @@ export const authOptions: AuthOptions = {
           }
         })
         if (!user || !user.password) {
-          throw new Error("Something Wrong");
+          throw new Error("Email atau password salah");
         }
         const passwordMatch = await bcrypt.compare(credentials.password, user.password);
         if (!passwordMatch) {
-          throw new Error("Something Wrong");
+          throw new Error("Email atau password salah");
         }
         return user;
       },
