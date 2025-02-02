@@ -42,6 +42,7 @@ const formSchema = z.object({
 });
 
 export default function Register() {
+  
   const { data: session } = useSession();
   const router = useRouter();
 
